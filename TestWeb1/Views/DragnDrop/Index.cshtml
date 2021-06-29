@@ -1,0 +1,74 @@
+﻿<div class="container-fluid" style="padding-top:10px">
+    <div class="info-box bg-dark">
+        <div class="info-box-content">
+            <span class="info-box-text">Drag And Drop</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <div class="card" style="height:35vh">
+                <div class="card-body" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img src="https://i.pinimg.com/originals/0e/09/6b/0e096ba3053d36603d6f6fbf6f501bc7.jpg" draggable="true" ondragstart="drag(event)" id="drag1" style="height:30vh">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card" style="height:35vh">
+                <div class="card-body" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card" style="height:35vh">
+                <div class="card-body" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card" style="height:35vh">
+                <div class="card-body" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTasks();
+        });
+
+        function GetTasks() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetTasks", "Home")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: {
+
+                },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+}

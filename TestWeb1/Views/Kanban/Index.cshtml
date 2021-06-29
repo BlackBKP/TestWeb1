@@ -1,0 +1,110 @@
+﻿<div class="container-fluid" style="padding-top:10px">
+    <div class="info-box bg-dark">
+        <div class="info-box-content">
+            <h1>KANBAN</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <div class="info-box bg-info">
+                <div class="info-box-content">
+                    <h3 class="info-box-text">To Do</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div id="todo" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+                    <div class="card" draggable="true" ondragstart="drag(event)" id="task1">
+                        <div class="card-body">
+                            <h3>Task 1</h3>
+                        </div>
+                    </div>
+                    <div class="card" draggable="true" ondragstart="drag(event)" id="task2">
+                        <div class="card-body">
+                            <h3>Task 2</h3>
+                        </div>
+                    </div>
+                    <div class="card" draggable="true" ondragstart="drag(event)" id="task3">
+                        <div class="card-body">
+                            <h3>Task 3</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="info-box bg-warning">
+                <div class="info-box-content">
+                    <h3 class="info-box-text">In Progress</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div id="in_progress" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="info-box bg-success">
+                <div class="info-box-content">
+                    <h3 class="info-box-text">Done</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div id="done" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            GetTasks();
+        });
+
+        async function GetTasks() {
+            await $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetTasks", "Kanban")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: { },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            if (ev.target.id == "todo") {
+                ev.target.appendChild(document.getElementById(data));
+                console.log(document.getElementById(data).id);
+            }
+            else if (ev.target.id == "in_progress") {
+                ev.target.appendChild(document.getElementById(data));
+                console.log(document.getElementById(data).id);
+            }
+            else if (ev.target.id == "done") {
+                ev.target.appendChild(document.getElementById(data));
+                console.log(document.getElementById(data).id);
+            }
+        }
+
+        function SetTask()
+
+    </script>
+}

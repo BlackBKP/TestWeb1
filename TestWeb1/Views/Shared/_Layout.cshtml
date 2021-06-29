@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Design Example</title>
+    <partial name="Style.cshtml" />
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+        <partial name="TopMenu.cshtml" />
+        <partial name="LeftMenu.cshtml" />
+        <div class="content-wrapper" style="background-color:rgb(34,39,42)">
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+        <partial name="Footer.cshtml" />
+    </div>
+    <partial name="Script.cshtml" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.css"/>
+</head>
+<body style="background-image: url(https://i.pinimg.com/originals/a2/1d/07/a21d070e4c0f6b2e826b13623a2178d4.jpg)">
+    <div class="container" style="padding-top:100px">
+        <div class="card" style="height:80vh;background-color:rgba(255,255,255,0.75)">
+            <div class="card-body" style="padding:10px">
+                <div class="row" style="height:100%">
+                    <div class="col-6">
+                        
+                    </div>
+                    <div class="col-6">
+                        <form role="form" asp-action="Submit" asp-controller="Login" method="post">
+                            <h1 style="font-weight:bold">
+                                Login
+                            </h1>
+                            <br />
+                            <label>
+                                Username
+                            </label>
+                            <input id="input_username" class="form-control" type="text"  name="username" placeholder="Username"/>
+                            <br />
+                            <label>
+                                Password
+                            </label>
+                            <input id="input_password" class="form-control" type="password" name="password" placeholder="Password"/>
+                            <br />
+                            <button id="button_login" class="btn btn-primary form-control" type="submit" value="Submit">
+                                Login
+                            </button>
+                            <hr />
+                            <button class="btn btn-primary" type="button">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button class="btn btn-primary" type="button">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

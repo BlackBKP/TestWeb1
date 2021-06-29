@@ -1,0 +1,280 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid" style="padding-top:10px">
+
+    <div class="row">
+        <div class="col-lg-2 col-md-4  col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-primary">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Day</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-primary">
+                    <i class="fas fa-calendar"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Month</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-primary">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Year</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-primary">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Customer</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-warning">
+                    <i class="fas fa-truck-loading"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Delivered</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-icon bg-danger">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="info-box-content">
+                    <span class="info-box-text">Scrapped</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <div class="card bg-dark" style="height: 35vh">
+                <div class="card-header">
+                    <h5>Current Tanks In Departments</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="chart1"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card bg-dark" style="height: 35vh">
+                <div class="card-body">
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card bg-dark" style="height: 35vh">
+                <div class="card-header">
+                    <h5>Total Order This Month</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="chart3"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card bg-dark" style="height: 35vh">
+                <div class="card-body">
+                    <canvas id="chart4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        
+    </div>
+
+</div>
+
+@section Scripts 
+{
+    <script type="text/javascript">
+        new Chart("chart1", {
+            type: "bar",
+            data: {
+                labels: ["Incoming", "Checking", "Testing", "Fixing", "Filling", "Store", "Deliver"],
+                datasets: [
+                    {
+                        label: "1 - 3 Days",
+                        backgroundColor: 'rgba(40,167,69,0.5)',
+                        data: [10, 11, 5, 7, 9, 7, 1],
+                    },
+                    {
+                        label: "4 - 6 Days",
+                        backgroundColor: 'rgba(255,193,7,0.5)',
+                        data: [5, 7, 6, 3, 4, 1, 1],
+                    },
+                    {
+                        label: "More Than 7 Days",
+                        backgroundColor: 'rgba(220,52,69,0.5)',
+                        data: [1, 2, 1, 0, 1, 3, 1],
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio:false,
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: "World Wine Production 2018"
+                },
+                scales: {
+                    y: {
+                        stacked: true
+                    },
+                    x: {
+                        stacked: true
+                    }
+                }
+            }
+        });
+
+        var xValues2 = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+        new Chart("chart2", {
+            type: "bar",
+            data: {
+                labels: xValues2,
+                datasets: [{
+                    data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+                    borderColor: "red",
+                    backgroundColor: "rgb(255,0,0,0.5)",
+                }, {
+                    data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+                    borderColor: "green",
+                    backgroundColor: "rgb(0,255,0,0.5)",
+                }, {
+                    data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+                    borderColor: "blue",
+                    backgroundColor: "rgb(0,0,255,0.5)",
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                legend: { display: false },
+                scales: {
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        var xValues3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+        var yValues3 = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15, 10, 11, 15, 9, 7, 5, 13, 12, 15, 16, 3, 5, 7, 8, 4, 2, 13, 2, 5, 14];
+
+        new Chart("chart3", {
+            type: "line",
+            data: {
+                labels: xValues3,
+                datasets: [{
+                    backgroundColor: "rgba(0,123,255,0.25)",
+                    borderColor: "rgba(0,123,255,1)",
+                    label: "Order",
+                    data: yValues3,
+                    fill: {
+                        target: 'origin',
+                    }
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tension: 0.5,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                },
+                title: {
+                    display: true,
+                    text: "Total Order This Month",
+                    fontColor: "white",
+                    fontSize: 24
+                },
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        display: false,
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                    x: {
+                        display:false,
+                        grid: {
+                            display: false
+                        },
+                    }
+                }
+            }
+        });
+
+        var xValues4 = ["Dept 1", "Dept 2", "Dept 3", "Dept 4", "Dept 5", "Scrap", "Customer"];
+        var yValues4 = [55, 49, 44, 24, 15, 6, 37];
+        var barColors4 = [
+            'rgba(185,29,71,0.5)',
+            'rgba(0,171,169,0.5)',
+            'rgba(43,87,151,0.5)',
+            'rgba(232,195,185,0.5)',
+            'rgba(30,113,69,0.5)',
+            'rgba(255,0,0,0.5)',
+            'rgba(0,0,255,0.5)',
+        ];
+
+        new Chart("chart4", {
+            type: "doughnut",
+            data: {
+                labels: xValues4,
+                datasets: [{
+                    backgroundColor: barColors4,
+                    borderColor: 'rgba(255,255,255,0.5)',
+                    borderWidth: 1,
+                    data: yValues4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: "World Wide Wine Production 2018"
+                }
+            }
+        });
+    </script>
+}
