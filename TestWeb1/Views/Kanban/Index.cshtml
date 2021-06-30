@@ -1,4 +1,11 @@
 ﻿<div class="container-fluid" style="padding-top:10px">
+
+    <style>
+        .cursor {
+            cursor:grabbing;
+        }
+    </style>
+
     <div class="row">
         <div class="col-lg-8 col-12">
             <div class="info-box bg-dark">
@@ -28,7 +35,7 @@
             </div>
             <div class="card">
                 <div id="todo" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:65vh">
-                    <div id="T0001" class="card" draggable="true" ondragstart="drag(event)">
+                    @*<div id="T0001" class="card" draggable="true" ondragstart="drag(event)">
                         <div class="card-body">
                             <h3>Task 1</h3>
                         </div>
@@ -42,7 +49,7 @@
                         <div class="card-body">
                             <h3>Task 3</h3>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -89,7 +96,7 @@
                 data: { },
                 success: function (response) {
                     console.log(response);
-                    GenTasks(response);
+                    //GenTasks(response);
                 }
             });
         });
@@ -118,20 +125,21 @@
             $('#todo').find('div').remove();
             $('#in_progress').find('div').remove();
             $('#done').find('div').remove();
-            for (var i = 0; i < tasks.lenght; i++) {
+            for (var i = 0; i < tasks.length; i++) {
+               
                 var str = '';
-                str += '<div id="' + tasks[i].id + '" class="card" draggable="true" ondragstart="drag(event)">';
+                str += '<div id="' + tasks[i].id + '" class="card cursor" draggable="true" ondragstart="drag(event)">';
                 str += '<div class="card-body">';
                 str += '<h3>' + tasks[i].name + '</h3>';
                 str += '</div></div>';
                 if (tasks[i].status == "To_Do") {
-                    $('#todo').appendChild(str);
+                    $('#todo').prepend(str);
                 }
                 else if (tasks[i].status == "In_Progress") {
-                    $('#in_progress').appendChild(str);
+                    $('#in_progress').prepend(str);
                 }
                 else if (tasks[i].status == "Done") {
-                    $('#done').appendChild(str);
+                    $('#done').prepend(str);
                 }
             }
         }
