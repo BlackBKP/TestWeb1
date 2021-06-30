@@ -28,17 +28,17 @@
             </div>
             <div class="card">
                 <div id="todo" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:65vh">
-                    <div class="card" draggable="true" ondragstart="drag(event)" id="task1">
+                    <div id="T0001" class="card" draggable="true" ondragstart="drag(event)">
                         <div class="card-body">
                             <h3>Task 1</h3>
                         </div>
                     </div>
-                    <div class="card" draggable="true" ondragstart="drag(event)" id="task2">
+                    <div id="T0002" class="card" draggable="true" ondragstart="drag(event)">
                         <div class="card-body">
                             <h3>Task 2</h3>
                         </div>
                     </div>
-                    <div class="card" draggable="true" ondragstart="drag(event)" id="task3">
+                    <div id="T0003" class="card" draggable="true" ondragstart="drag(event)">
                         <div class="card-body">
                             <h3>Task 3</h3>
                         </div>
@@ -98,6 +98,7 @@
             GetTasks();
         });
 
+        var tasks = [];
         async function GetTasks() {
             await $.ajax({
                 type: "GET",
@@ -106,20 +107,32 @@
                 data: { },
                 success: function (response) {
                     console.log(response);
-                    GenTasks(response);
+                    tasks = response;
+                    GenTasks();
                 }
             });
         }
 
-        function GenTasks(tasks) {
-            $('#todo').empty();
-            $('#in_progress').empty();
-            $('#done').empty();
+        function GenTasks() {
+            console.log("Generate Tasks");
+            $('#todo').find('div').remove();
+            $('#in_progress').find('div').remove();
+            $('#done').find('div').remove();
             for (var i = 0; i < tasks.lenght; i++) {
+                var str = '';
+                str += '<div id="' + tasks[i].id + '" class="card" draggable="true" ondragstart="drag(event)">';
+                str += '<div class="card-body">';
+                str += '<h3>' + tasks[i].name + '</h3>';
+                str += '</div></div>';
                 if (tasks[i].status == "To_Do") {
-
+                    $('#todo').appendChild(str);
                 }
-                else if(tasks[i].status )
+                else if (tasks[i].status == "In_Progress") {
+                    $('#in_progress').appendChild(str);
+                }
+                else if (tasks[i].status == "Done") {
+                    $('#done').appendChild(str);
+                }
             }
         }
 
