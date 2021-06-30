@@ -1,10 +1,24 @@
 ﻿<div class="container-fluid" style="padding-top:10px">
-    <div class="info-box bg-dark">
-        <div class="info-box-content">
-            <h1>KANBAN</h1>
+    <div class="row">
+        <div class="col-lg-8 col-12">
+            <div class="info-box bg-dark">
+                <div class="info-box-content">
+                    <h1>KANBAN</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-12">
+            <button id="btn_set_tasks" class="btn btn-primary form-control" type="button">
+                Set Tasks
+            </button>
+        </div>
+        <div class="col-lg-2 col-12">
+            <button id="btn_get_tasks" class="btn btn-primary form-control" type="button">
+                Get Tasks
+            </button>
         </div>
     </div>
-
+    
     <div class="row">
         <div class="col-lg-4 col-12">
             <div class="info-box bg-info">
@@ -13,7 +27,7 @@
                 </div>
             </div>
             <div class="card">
-                <div id="todo" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+                <div id="todo" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:65vh">
                     <div class="card" draggable="true" ondragstart="drag(event)" id="task1">
                         <div class="card-body">
                             <h3>Task 1</h3>
@@ -39,7 +53,7 @@
                 </div>
             </div>
             <div class="card">
-                <div id="in_progress" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+                <div id="in_progress" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:65vh">
 
                 </div>
             </div>
@@ -51,7 +65,7 @@
                 </div>
             </div>
             <div class="card">
-                <div id="done" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:50vh">
+                <div id="done" class="card-body" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height:65vh">
 
                 </div>
             </div>
@@ -67,6 +81,23 @@
             GetTasks();
         });
 
+        $('#btn_set_tasks').on('click', function () {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("SetTasks", "Kanban")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: { },
+                success: function (response) {
+                    console.log(response);
+                    GenTasks(response);
+                }
+            });
+        });
+
+        $('#btn_get_tasks').on('click', function () {
+            GetTasks();
+        });
+
         async function GetTasks() {
             await $.ajax({
                 type: "GET",
@@ -75,8 +106,21 @@
                 data: { },
                 success: function (response) {
                     console.log(response);
+                    GenTasks(response);
                 }
             });
+        }
+
+        function GenTasks(tasks) {
+            $('#todo').empty();
+            $('#in_progress').empty();
+            $('#done').empty();
+            for (var i = 0; i < tasks.lenght; i++) {
+                if (tasks[i].status == "To_Do") {
+
+                }
+                else if(tasks[i].status )
+            }
         }
 
         function allowDrop(ev) {
@@ -90,21 +134,62 @@
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
+            var id_task = document.getElementById(data).id;
             if (ev.target.id == "todo") {
                 ev.target.appendChild(document.getElementById(data));
-                console.log(document.getElementById(data).id);
+                SetTaskToDo(id_task);
             }
             else if (ev.target.id == "in_progress") {
                 ev.target.appendChild(document.getElementById(data));
-                console.log(document.getElementById(data).id);
+                SetTaskInProgress(id_task);
             }
             else if (ev.target.id == "done") {
                 ev.target.appendChild(document.getElementById(data));
-                console.log(document.getElementById(data).id);
+                SetTaskDone(id_task);
             }
         }
 
-        function SetTask()
+        async function SetTaskToDo(id_task) {
+            await $.ajax({
+                type: "POST",
+                url: '@Url.Action("SetTaskToDo", "Kanban")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    id_task
+                },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        async function SetTaskInProgress(id_task) {
+            await $.ajax({
+                type: "POST",
+                url: '@Url.Action("SetTaskInProgress", "Kanban")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    id_task
+                },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        async function SetTaskDone(id_task) {
+            await $.ajax({
+                type: "POST",
+                url: '@Url.Action("SetTaskDone", "Kanban")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    id_task
+                },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
 
     </script>
 }
