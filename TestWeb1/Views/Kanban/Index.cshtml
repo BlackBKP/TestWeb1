@@ -95,8 +95,7 @@
 	            contentType: 'application/x-www-form-urlencoded',
                 data: { },
                 success: function (response) {
-                    console.log(response);
-                    //GenTasks(response);
+                    GenTasks(response);
                 }
             });
         });
@@ -113,7 +112,6 @@
 	            contentType: 'application/x-www-form-urlencoded',
                 data: { },
                 success: function (response) {
-                    console.log(response);
                     tasks = response;
                     GenTasks();
                 }
@@ -121,12 +119,10 @@
         }
 
         function GenTasks() {
-            console.log("Generate Tasks");
             $('#todo').find('div').remove();
             $('#in_progress').find('div').remove();
             $('#done').find('div').remove();
             for (var i = 0; i < tasks.length; i++) {
-               
                 var str = '';
                 str += '<div id="' + tasks[i].id + '" class="card cursor" draggable="true" ondragstart="drag(event)">';
                 str += '<div class="card-body">';

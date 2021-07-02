@@ -1,0 +1,67 @@
+﻿<div class="container-fluid" style="padding-top:10px">
+    <div class="info-box">
+        <div class="info-box-content">
+            <h3>KANBAN VIEW</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-12">
+            <div class="card card-info" style="height:75vh">
+                <div class="card-header">
+                    <span class="card-title">To Do</span>
+                </div>
+                <div id="todo" class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="card card-warning" style="height:75vh">
+                <div class="card-header">
+                    <span class="card-title">In Progress</span>
+                </div>
+                <div id="in_progress" class="card-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="card card-success" style="height:75vh">
+                <div class="card-header">
+                    <span class="card-title">Done</span>
+                </div>
+                <div id="done" class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetData();
+        });
+
+        function GetData() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetData", "KanbanView")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: { },
+                success: function (response) {
+                    GenTasks(response);
+                }
+            });
+        }
+
+        function GenTasks() {
+
+        }
+
+    </script>
+}

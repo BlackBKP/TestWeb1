@@ -43,7 +43,7 @@
         function GetStocks() {
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("GetData", "StockKBO")',
+                url: '@Url.Action("GetData", "Stock")',
 	            contentType: 'application/x-www-form-urlencoded',
                 data: { },
                 success: function (response) {
