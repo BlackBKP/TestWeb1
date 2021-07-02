@@ -1,0 +1,78 @@
+﻿<div class="container-fluid" style="padding-top:10px">
+    <div class="info-box">
+        <div class="info-box-content">
+            <h3>STOCK</h3>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">Header</span>
+        </div>
+        <div class="card-body">
+            <table id="table_stock" class="table table-sm table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Unit</th>
+                        <th>Stock Quantity HQ</th>
+                        <th>Stock Location HQ</th>
+                        <th>Stock Quantity RBO</th>
+                        <th>Stock Location RBO</th>
+                        <th>Stock Quantity KBO</th>
+                        <th>Stock Location KBO</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{ 
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            GetStocks();
+        });
+
+        function GetStocks() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetData", "Stock")',
+	            contentType: 'application/x-www-form-urlencoded',
+                data: { },
+                success: function (response) {
+                    GenerateTable(response);
+                }
+            });
+        }
+
+        function GenerateTable(stocks) {
+            var datas = [];
+            for (var i = 0; i < stocks.length; i++) {
+                datas.push([
+                    stocks[i].id,
+                    stocks[i].description,
+                    stocks[i].price,
+                    stocks[i].unit,
+                    stocks[i].stock_quantity_hq,
+                    stocks[i].stock_location_hq,
+                    stocks[i].stock_quantity_rbo,
+                    stocks[i].stock_location_rbo,
+                    stocks[i].stock_quantity_kbo,
+                    stocks[i].stock_location_kbo
+                ]);
+            }
+
+            $('#table_stock').DataTable({
+                data: datas,
+            });
+        }
+
+    </script>
+}
