@@ -10,11 +10,11 @@ using TestWeb1.Services;
 
 namespace TestWeb1.Controllers
 {
-    public class StockController : Controller
+    public class StockKBOController : Controller
     {
         IDatabase DatabaseInterface;
 
-        public StockController()
+        public StockKBOController()
         {
             this.DatabaseInterface = new DatabaseService();
         }
@@ -35,9 +35,9 @@ namespace TestWeb1.Controllers
         public List<StockModel> GetStockModels()
         {
             List<StockModel> stocks = new List<StockModel>();
-            SqlConnection con = DatabaseInterface.ConnectHQ();
+            SqlConnection con = DatabaseInterface.ConnectKBO();
             con.Open();
-            string str_cmd = "select * from CTL_HQ";
+            string str_cmd = "select * from CTL_KBO";
             SqlCommand cmd = new SqlCommand(str_cmd, con);
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.HasRows)

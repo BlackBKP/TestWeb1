@@ -1,7 +1,7 @@
 ﻿<div class="container-fluid" style="padding-top:10px">
     <div class="info-box">
         <div class="info-box-content">
-            <h3>STOCK HQ</h3>
+            <h3>STOCK RBO</h3>
         </div>
     </div>
     <div class="card">
@@ -25,7 +25,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
         </div>
@@ -33,9 +32,8 @@
 </div>
 
 @section Scripts
-{ 
+{
     <script type="text/javascript">
-
         $(document).ready(function () {
             GetStocks();
         });
@@ -43,7 +41,7 @@
         function GetStocks() {
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("GetData", "StockKBO")',
+                url: '@Url.Action("GetData", "StockRBO")',
 	            contentType: 'application/x-www-form-urlencoded',
                 data: { },
                 success: function (response) {

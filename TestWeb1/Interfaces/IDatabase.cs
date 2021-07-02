@@ -8,6 +8,8 @@ namespace TestWeb1.Interfaces
 {
     interface IDatabase
     {
-        SqlConnection Connect();
+        SqlConnection ConnectHQ();
+        SqlConnection ConnectRBO();
+        SqlConnection ConnectKBO();
     }
 }
