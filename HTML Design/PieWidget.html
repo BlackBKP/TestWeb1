@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pie Chart Widget</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css" integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-secondary">
+  <div class="container-fluid" style="padding:10px">
+
+    <div class="card bg-dark text-white elevation-2">
+      <div class="card-header">
+        <span class="card-title">TEST Color Palete</span>
+      </div>
+      <div class="card-body">
+        <canvas id="p1" style="height:300px"></canvas>
+      </div>
+    </div>
+
+    <div class="card bg-dark text-white elevation-2">
+      <div class="card-header">
+        <h5 class="card-title">Pie Chart</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+            <canvas id="myChart" height="100%"></canvas>
+          </div>
+          <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
+            <form>
+              <label class="form-row" for="data1" style="font-size:24px;font-weight:bold">Data 1</label>
+              <span class="form-row" id="data1">Value = 12 37.5%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:37.5%;background-color:#ff6384;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data2" style="font-size:24px;font-weight:bold">Data 2</label>
+              <span class="form-row" id="data2">Value = 17 53.1%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:53.1%;background-color:#36a2eb;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data3" style="font-size:24px;font-weight:bold">Data 3</label>
+              <span class="form-row" id="data3">Value = 3 9.37%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:9.37%;background-color:#ffce56;opacity:0.75"></div>
+              </div>
+              <br/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:20px"></div>
+
+    <div class="card bg-dark text-white elevation-2">
+      <div class="card-header">
+        <h5 class="card-title">Doughnut Chart</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+            <canvas id="myChart2" height="100%"></canvas>
+          </div>
+          <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
+            <form>
+              <label class="form-row" for="data1" style="font-size:24px;font-weight:bold">Data 1</label>
+              <span class="form-row" id="data1">Value = 20 20.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:20%;background-color:#ff6384;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data2" style="font-size:24px;font-weight:bold">Data 2</label>
+              <span class="form-row" id="data2">Value = 50 50.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%;background-color:#36a2eb;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data3" style="font-size:24px;font-weight:bold">Data 3</label>
+              <span class="form-row" id="data3">Value = 30 30.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:30%;background-color:#ffce56;opacity:0.75"></div>
+              </div>
+              <br/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:20px"></div>
+
+    <div class="card bg-dark text-white elevation-2">
+      <div class="card-header">
+        <h5 class="card-title">Polar Area Chart</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+            <canvas id="myChart3" height="100%"></canvas>
+          </div>
+          <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
+            <form>
+              <label class="form-row" for="data1" style="font-size:24px;font-weight:bold">Data 1</label>
+              <span class="form-row" id="data1">Value = 20 20.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:20%;background-color:#ff6384;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data2" style="font-size:24px;font-weight:bold">Data 2</label>
+              <span class="form-row" id="data2">Value = 50 50.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%;background-color:#36a2eb;opacity:0.75"></div>
+              </div>
+              <br/>
+              <label class="form-row" for="data3" style="font-size:24px;font-weight:bold">Data 3</label>
+              <span class="form-row" id="data3">Value = 30 30.00%</span>
+              <div class="progress bg-dark" style="border-style:solid;border-width:1px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:30%;background-color:#ffce56;opacity:0.75"></div>
+              </div>
+              <br/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js" integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins:{
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var myChart2 = new Chart(ctx2, {
+      type:'doughnut',
+      data:{
+        labels: ['Red','Green','Blue'],
+        datasets:[{
+          label: 'TEST DATA',
+          data:[20,50,30],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth:[1,1,1]
+        }]
+      },
+      options:{
+        maintainAspectRatio: false,
+        plugins:{
+          legend:{
+            display: false
+          }
+        }
+      }
+    });
+
+    var ctx3 = document.getElementById('myChart3').getContext('2d');
+    var myChart3 = new Chart(ctx3, {
+      type:'polarArea',
+      data:{
+        labels: ['Red','Green','Blue'],
+        datasets:[{
+          label: 'TEST DATA',
+          data:[20,50,30],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth:[1,1,1]
+        }]
+      },
+      options:{
+        maintainAspectRatio: false,
+        plugins:{
+          legend:{
+            display: false
+          }
+        }
+      }
+    });
+
+    var ctx4 = document.getElementById('p1').getContext('2d');
+    var p1 = new Chart(ctx4, {
+      type:'pie',
+      data: {
+        datasets:[{
+          data:[10,20,30,40,50,60,70,80,90],
+          backgroundColor:[
+            '#ffffff',
+            '#caf0f8',
+            '#ade8f4',
+            '#90e0ef',
+            '#48cae4',
+            '#00b4d8',
+            '#0096c7',
+            '#0077b6',
+            '#023e8a',
+            '#03045e'
+          ],
+          borderWidth:1,
+        }]
+      },
+      options:{
+        maintainAspectRatio:false
+      }
+    });
+  </script>
+</body>
+</html>

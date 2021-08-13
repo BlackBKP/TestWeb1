@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LCA Spent Chart</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css" integrity="sha512-mxrUXSjrxl8vm5GwafxcqTrEwO1/oBNU25l20GODsysHReZo4uhVISzAKzaABH6/tTfAxZrY2FprmeAP5UZY8A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-secondary">
+
+  <div class="container-fluid" style="padding:10px">
+    <div class="card bg-dark text-white elevation-2">
+      <div class="card-header">
+        <span class="card-title">LCA Spent Chart</span>
+      </div>
+      <div class="card-body">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <canvas id="myChart" height="400px"></canvas>
+        </div>
+        <div class="row" style="margin-top:50px">
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-secondary">
+              <span class="info-box-icon bg-primary">
+                <i class="fas fa-money-bill-wave"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Budget Spent</span>
+                <span class="info-box-number">123/123</span>
+                <div class="progress bg-white">
+                  <div class="progress-bar bg-primary" style="width:50%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-secondary">
+              <span class="info-box-icon bg-success">
+                <i class="fas fa-tasks"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Progress</span>
+                <span class="info-box-number">123/123</span>
+                <div class="progress bg-white">
+                  <div class="progress-bar bg-success" style="width:50%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-secondary">
+              <span class="info-box-icon bg-danger">
+                <i class="fas fa-money-check"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Invoice</span>
+                <span class="info-box-number">123/123</span>
+                <div class="progress bg-white">
+                  <div class="progress-bar bg-danger" style="width:50%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-secondary">
+              <span class="info-box-icon bg-warning">
+                <i class="fab fa-google text-white"></i>
+              </span>
+              <div class="info-box-content">
+                <span class="info-box-text">Data 4</span>
+                <span class="info-box-number">123/123</span>
+                <div class="progress bg-white">
+                  <div class="progress-bar bg-warning" style="width:50%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js" integrity="sha512-AJUWwfMxFuQLv1iPZOTZX0N/jTCIrLxyZjTRKQostNU71MzZTEPHjajSK20Kj1TwJELpP7gl+ShXw5brpnKwEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+        datasets: [
+          {
+            type: 'bar',
+            label: 'Budget Spent',
+            data: [12, 19, 3, 15, 17],
+            backgroundColor: 'rgba(2,62,138,0.75)',
+            borderColor: 'rgba(2,62,138,1)',
+            borderWidth: 1,
+            order: 0,
+            yAxisID: 'MB',
+            barPercentage: 0.9
+          },
+          {
+            type: 'line',
+            label: 'Budget ACC',
+            data: [12, 31, 34, 49, 66],
+            backgroundColor: 'rgba(72, 202, 228, 0.75)',
+            borderColor: 'rgba(72, 202, 228, 1)',
+            borderWidth: 2,
+            order: 1,
+            yAxisID: 'MB',
+            pointRadius: 1,
+            pointHoverRadius: 3
+          },
+          {
+            type: 'line',
+            label: 'Progress',
+            data: [10,25,33,45,61],
+            backgroundColor: 'rgba(0,255,0,0.5)',
+            borderColor: 'rgba(0,255,0,1)',
+            borderWidth: 2,
+            order: 2,
+            yAxisID: 'Percentage',
+            pointRadius: 1,
+            pointHoverRadius: 3
+          },
+          {
+            type: 'line',
+            label: 'Invoice',
+            data: [5,10,25,35,55],
+            backgroundColor: 'rgba(255,0,0,0.75)',
+            borderColor: 'rgba(255,0,0,1)',
+            borderWidth: 2,
+            order: 3,
+            yAxisID: 'Percentage',
+            pointRadius: 1,
+            pointHoverRadius: 3
+          },
+          {
+            type:'bar',
+            label: '80%',
+            data:[[70,80],[70,80],[70,80],[70,80],[70,80]],
+            yAxisID: 'Percentage',
+            barPercentage: 1.25,
+            backgroundColor: 'rgba(255,255,0,0.4)',
+            pointRadius: 0,
+            order: 4
+          },
+          {
+            type:'bar',
+            label:'100 %',
+            data:[[80,100],[80,100],[80,100],[80,100],[80,100]],
+            yAxisID: 'Percentage',
+            barPercentage: 1.25,
+            backgroundColor: 'rgba(255,0,0,0.4)',
+            borderColor: 'rgba(255,0,0,1)',
+            pointRadius: 0,
+            order: 5
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels:{
+              color:'white'
+            }
+          }
+        },
+        scales: {
+          x:{
+            stacked:true,
+            ticks: {
+              color:'white'
+            },
+            grid:{
+              color:'rgba(255,255,255,0.25)'
+            }
+          },
+          'MB' : {
+            type: 'linear',
+            position: 'left',
+            title: {
+              display: true,
+              text: 'Million BAHT',
+              color:'white'
+            },
+            suggestedMin: 0,
+            suggestedMax: 120,
+            ticks: {
+              stepSize: 12,
+              color:'white',
+            },
+            grid:{
+              color:'rgba(255,255,255,0.25)'
+            }
+          },
+          'Percentage' : {
+            type: 'linear',
+            position : 'right',
+            title: {
+              display: true,
+              text: 'Percentage',
+              color:'white'
+            },
+            suggestedMin: 0,
+            suggestedMax: 100,
+            ticks: {
+              stepSize: 10,
+              color:'white'
+            },
+            grid:{
+              color:'rgba(255,255,255,0.25)'
+            }
+          },
+        }
+      }
+    });
+  </script>
+</body>
+</html>
